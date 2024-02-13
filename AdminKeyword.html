@@ -1,0 +1,682 @@
+<!DOCTYPE HTML>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Admin Keyword</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" defer></script>
+      <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+   </head>
+   <style>
+      body {
+      background-color: #fbfbfb;
+      }
+      #footer ul.links li:last-child{
+         border-right: 2px solid rgba(29,38,45,1.0);
+}
+      .logo{
+         width:200px;
+      }
+      .form-check-input:checked{
+      border-color: white !important;
+      }
+      .radioBtns{
+      padding-left: 50px;
+      padding-top: 20px;
+      }
+      .font16{
+      font-size: 16px;
+      font-family: sans-serif;
+      }
+      .font18{
+      font-size: 18px;
+      font-family: sans-serif;
+      }
+      .logout{
+      padding-left:40px;
+      }
+      .logout a{
+      color:#0088cc;
+      text-decoration: none;
+      }
+      .logout a:hover{
+      text-decoration: underline;
+      }
+      .margin250{
+      margin-left:250px;
+      }
+      /*footer*/
+      #footer {
+      word-wrap: break-word;
+      }
+      div.footer {
+      background-color: rgba(29,38,45,1.0);
+      }
+      div.footer {
+      color: rgb(255,255,255) !important;
+      }
+      .footerRow {
+      margin: 0 auto;
+      padding: 15px;
+      width: 100%;
+      }
+      #footer ul.links {
+      clear: none;
+      display: block;
+      float: left;
+      }
+      #footer .inner {
+      display: block;
+      padding: 0 100px;
+      margin: 0 auto;
+      max-width: 960px;
+      }
+      ul.inner, ul.social-links {
+      list-style: none;
+      padding-left: 0;
+      color:#7f9bb2;
+      font-size: 11px;
+      }
+      #footer ul.links li {
+      border: 0 none transparent;
+      border-radius: 0;
+      box-shadow: none;
+      border-right: 2px solid;
+      display: block;
+      float: left;
+      font-size: 1em;
+      line-height: 1em;
+      margin: 0 10px 5px 0;
+      padding: 0 10px 0 0;
+      clear: none;
+      }
+      .rightfloat {
+      float: right;
+      }
+      .footercontainer {
+      max-width: 1100px;
+      margin: 0 auto;
+      }
+      /*Header*/
+      .limitwidth,.inner{
+      width:1000px;
+      margin:0 auto;
+      margin-top:20px;
+      margin-bottom:10px;
+      }
+      .menu.desktop .nav {
+      margin: 0;
+      padding: 0;
+      float: right;
+      margin-top: 7.5px;
+      }
+      .mainContent{
+      border-top: 1px solid rgb(0,136,204) !important;
+      }
+      .welcomeMsg{
+      font-style: italic;
+      color:#0088cc;
+      }
+      .form-select-lg{
+      font-size: 16px !important;
+      }
+      input[type=file]::file-selector-button {
+      border: 2px solid #f47721;
+      padding: .2em .4em;
+      border-radius: .2em;
+      background: #f47721;
+      color:white;
+      cursor: pointer;
+      font-size: 16px;
+      }
+      input[type=file]::file-selector-button:hover {
+      background-color: #0088cc;
+      color:white;
+      border: 2px solid #0088cc;
+      }
+      @media (min-width: 991.98px) {
+      main {
+      padding-left: 240px;
+      }
+      }
+      .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: white;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      }
+      .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #0088cc;
+      display: block;
+      transition: 0.3s;
+      }
+      .sidebar a:hover {
+      color: white;
+      background-color: #0088cc;
+      }
+      .sidebar a:first-child{
+      color: #0088cc;
+      background-color: white;
+      }
+      .sidebar a:first-child:hover{
+      color: #0088cc;
+      background-color: none;
+      }
+      .sidebar .closebtn {
+      position: absolute;
+      top: -10px;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+      }
+      .openbtn {
+      font-size: 16px;
+      cursor: pointer;
+      background-color:#0088cc;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      margin-top:20px;
+      }
+      .openbtn:hover {
+      background-color: #f47721;
+      }
+      #main {
+      transition: margin-left .5s;
+      padding: 16px;
+      }
+      .cursor{
+      cursor: pointer;
+      }
+      .menuItem:hover{
+      background-color: azure;
+      }
+      .menuItem{
+      font-size: 20px;
+      }
+      h4 {
+      margin: 2rem 0rem 1rem;
+      }
+      .drop-zone {
+      max-width: 200px;
+      height: 200px;
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      cursor: pointer;
+      color: #cccccc;
+      border: 4px dashed #009578;
+      border-radius: 10px;
+      }
+      .drop-zone--over {
+      border-style: solid;
+      }
+      .drop-zone__input {
+      display: none;
+      }
+      .drop-zone__thumb {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #cccccc;
+      background-size: cover;
+      position: relative;
+      }
+      .drop-zone__thumb::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 5px 0;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.75);
+      font-size: 14px;
+      text-align: center;
+      }
+      .uploadBtns{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      }
+      .btns{
+      margin: 0px 10px;
+      background: #f47721;
+      color:white;
+      }
+      .btns:hover{
+      background-color: #0088cc;
+      color:white;
+      }
+      .list-group-item:hover{
+      background-color: #0088cc !important;
+      color: white !important;
+      }
+      .list-group-item{
+      color: #0088cc !important;
+      }
+      /**drag drop*/
+      .dropzone{
+      background-color: #0088cc !important;
+      border-radius: 10px;
+      }
+      .alignDivs{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      }
+      .title-head {
+      color: #616061;
+      position: relative;
+      margin: 30px 0 2px;
+      padding-top: 12px;
+      font-size: 22px;
+      }
+      .title-head:before {
+      content: "";
+      width: 96px;
+      height: 2px;
+      background: #e8488e;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin: 0 auto;
+      transform: translate(-50%, -43%);
+      z-index: -1;
+      }
+      .drag {
+      position: relative;
+      min-height: 300px;
+      }
+      .drag .wrapper {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex: 1 1 0;
+      justify-content: space-around;
+      color: #BBB;
+      }
+      .drag .wrapper ul {
+      width: 90%;
+      min-height: 300px;
+      padding: 18px;
+      list-style-type: none;
+      background-color: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+      }
+      .drag .wrapper ul li {
+      padding: 1% 5%;
+      background-color: #fff;
+      transition: 0.3s ease-out;
+      margin-bottom: 15px;
+      width: 100%;
+      float: left;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      border-radius: 5px;
+      cursor: move;
+      color: black;
+      }
+      .drag .wrapper ul li:hover {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      }
+      .drag .wrapper ul li p {
+      margin-bottom: 0;
+      font-size: 14px;
+      color:black;
+      }
+      .drag .wrapper ul li:active {
+      background-color: #f47721;
+      color: white;
+      }
+      .textHeading{
+      color:black;
+      }
+      .alignDivsLine{
+      display: flex;
+      }
+   </style>
+   <script>
+      window.console = window.console || function(t) {};
+   </script>
+   </head>
+   <body>
+      <div class="limitwidth">
+         <div class="menu desktop upper">
+            <div class="inner">
+               <a href="https://careers.cigniti.com/" title="Logo" style="display:inline-block">
+                  <img class="logo" src="./images/zastralogo.svg">
+               </a>
+               <ul class="nav nav-pills">
+                  <li>
+                     <span class="welcomeMsg">Hi, Welcome Mark</span>
+                  </li>
+                  <li class="logout">
+                     <a href="login.html"> Logout </a> 
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!--Main Navigation-->
+      <div id="mySidebar" class="sidebar">
+         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+         <a href="AdminUpload.html">Files Upload</a>
+         <a href="AdminKeyword.html">Managing Keywords</a>
+         <a href="AdminLLM.html">Deploy LLM</a>
+      </div>
+      <!--Main Navigation-->
+      <!--Main layout-->
+      <main class="mainContent">
+         <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
+         <h4 class="font18 mb-4"><strong>Manage keywords that are allowed in prompts and responses</strong></h4>
+         <div class="container pt-1" id="filesUpload" >
+            <div>
+               <section class="main-sec RightDiv">
+                  <div class="">
+                     <div class="row">
+                        <div class="col-6">
+                           <div class="flexDivs mb-2">
+                              <div class="form-group col-md-12 alignDivsLine" >
+                                 <div class="">
+                                    <label for="pwd" class="font16">Keyword Entry:</label>
+                                    <input type="text" class="form-control mt-2" id="textbox_id">
+                                 </div>
+                                 <div class="radioBtns">
+                                    <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onchange="pushKeyword()" value="whiteList">
+                                       <label class="form-check-label" for="flexRadioDefault1">
+                                       WhiteList
+                                       </label>
+                                    </div>
+                                    <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onchange="pushKeyword()" value="blackList">
+                                       <label class="form-check-label" for="flexRadioDefault2">
+                                       Blacklist
+                                       </label>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           </p>
+                           <strong>OR</strong>
+                           <p>
+                           <div class="drop-zone">
+                              <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                              <input type="file" name="myFile" class="drop-zone__input" id="inputFile">
+                           </div>
+                        </div>
+                        <div class="col-6">
+                           <div class="drag">
+                              <div class="wrapper">
+                                 <div class="alignDivs">
+                                    <h3 class="font16 textHeading"><strong> Whitelist</strong></h3>
+                                    <ul class="dropzone" id="whiteList">
+                                       <li draggable="true">
+                                          <p>Keyword 1</p>
+                                       </li>
+                                       <li draggable="true">
+                                          <p>Keyword 2</p>
+                                       </li>
+                                       <li draggable="true">
+                                          <p>Keyword 3</p>
+                                       </li>
+                                       <div style="clear:both"></div>
+                                    </ul>
+                                 </div>
+                                 <div class="alignDivs">
+                                    <h3 class="font16 textHeading"><strong> Blacklist</strong></h3>
+                                    <ul class="dropzone" id="blackList">
+                                       <li draggable="true">
+                                          <p>Keyword 6</p>
+                                       </li>
+                                       <li draggable="true">
+                                          <p>Keyword 7</p>
+                                       </li>
+                                       <div style="clear:both"></div>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+            </div>
+         </div>
+         <div class="container pt-4" id="chatbots" style="display: none;">
+            <h1>Bots List</h1>
+            <br/>
+         </div>
+         <div class="container pt-4" id="manageUsers" style="display: none;">
+            <h1>Manage users</h1>
+            <br/>
+         </div>
+         <div class="container pt-4" id="uploadedFiles" style="display: none;">
+            <h1>Uploaded Files</h1>
+            <br/>
+         </div>
+      </main>
+      <div id="footer">
+         <div id="footerRowTop" class="footer footerRow" role="navigation">
+            <div class="footercontainer">
+               <div id="footerInnerLinksSocial" class="row">
+                  <ul class="inner links">
+                     <li><a title=" © Copyright 2022. All Rights Reserved" aria-description="Opens in a new tab."> © Copyright 2022. All Rights Reserved</a></li>
+                     <li><a title="Privacy Policy" aria-description="Opens in a new tab.">Privacy Policy</a></li>
+                     <li><a title="Diversity &amp; Inclusion" aria-description="Opens in a new tab.">Diversity &amp; Inclusion</a></li>
+                     <li><a title="Modern Slavery Statement 2022" aria-description="Opens in a new tab.">Modern Slavery Statement 2022</a></li>
+                     <li><a title="Modern Slavery Statement 2022" aria-description="Opens in a new tab.">Cookie Consent Preferences</a></li>
+                  </ul>
+                  <div class="rightfloat">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="footerRowBottom" class="footer footerRow" role="region" aria-label="Footer">
+            <div class="footercontainer">
+            </div>
+         </div>
+      </div>
+      <!--Main layout-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+      <script>
+         function makeActive(id){         
+         document.getElementById("filesUpload").style.display='none';
+         document.getElementById("chatbots").style.display='none';
+         document.getElementById("manageUsers").style.display='none';         
+         document.getElementById("uploadedFiles").style.display='none';         
+         document.getElementById(id).style.display='block';         
+         }
+      </script>
+      <script>
+         function openNav() {
+           document.getElementById("mySidebar").style.width = "250px";
+           document.getElementById("main").style.marginLeft = "250px";
+         }
+         
+         function closeNav() {
+           document.getElementById("mySidebar").style.width = "0";
+           document.getElementById("main").style.marginLeft= "0";
+         }
+      </script>
+      <script id="rendered-js" >
+         /*drag drop file page 2*/
+         
+         document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+          const dropZoneElement = inputElement.closest(".drop-zone");
+         
+          dropZoneElement.addEventListener("click", (e) => {
+            inputElement.click();
+          });
+         
+          inputElement.addEventListener("change", (e) => {
+            if (inputElement.files.length) {
+              updateThumbnail(dropZoneElement, inputElement.files[0]);
+            }
+          });
+         
+          dropZoneElement.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropZoneElement.classList.add("drop-zone--over");
+          });
+         
+          ["dragleave", "dragend"].forEach((type) => {
+            dropZoneElement.addEventListener(type, (e) => {
+              dropZoneElement.classList.remove("drop-zone--over");
+            });
+          });
+         
+          dropZoneElement.addEventListener("drop", (e) => {
+            e.preventDefault();
+         
+            if (e.dataTransfer.files.length) {
+              inputElement.files = e.dataTransfer.files;
+              updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+            }
+         
+            dropZoneElement.classList.remove("drop-zone--over");
+          });
+         });
+         
+         /**
+         * Updates the thumbnail on a drop zone element.
+         *
+         * @param {HTMLElement} dropZoneElement
+         * @param {File} file
+         */
+         function updateThumbnail(dropZoneElement, file) {
+          let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+         
+          // First time - remove the prompt
+          if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+            dropZoneElement.querySelector(".drop-zone__prompt").remove();
+          }
+         
+          // First time - there is no thumbnail element, so lets create it
+          if (!thumbnailElement) {
+            thumbnailElement = document.createElement("div");
+            thumbnailElement.classList.add("drop-zone__thumb");
+            dropZoneElement.appendChild(thumbnailElement);
+          }
+         
+          thumbnailElement.dataset.label = file.name;
+         
+          // Show thumbnail for image files
+          if (file.type.startsWith("image/")) {
+            const reader = new FileReader();
+         
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+              thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
+            };
+          } else {
+            thumbnailElement.style.backgroundImage = null;
+          }
+         }
+      </script>
+      <script id="rendered-js" >
+         (function () {
+           var dragged, listener;
+         
+           console.clear();
+         
+           dragged = null;
+         
+           listener = document.addEventListener;
+         
+           listener("dragstart", event => {
+             console.log("start !");
+             return dragged = event.target;
+           });
+         
+           listener("dragend", event => {
+             return console.log("end !");
+           });
+         
+           listener("dragover", function (event) {
+             return event.preventDefault();
+           });
+         
+           listener("drop", event => {
+             console.log("drop !");
+             event.preventDefault();
+             if (event.target.className === "dropzone") {
+               dragged.parentNode.removeChild(dragged);
+               return event.target.appendChild(dragged);
+             }
+           });
+         
+         }).call(this);
+         //# sourceURL=pen.js
+             
+      </script>
+      <script>
+         function pushKeyword(){
+           var typesTexts = document.getElementById('textbox_id').value;
+           if(typesTexts.indexOf(',') !== -1)
+           {
+             const array = typesTexts.split(',');
+            const radioSelected = document.querySelector('input[name="flexRadioDefault"]:checked').value;         
+             let list = document.getElementById(radioSelected);
+             for (i = 0; i < array.length; ++i) {
+                var li = document.createElement('li');
+                li.innerText = array[i];
+                li.draggable=true;
+                list.appendChild(li);
+             }
+           }
+           else{ /*if in input bx on eval is given then dont split*/
+            const radioSelected = document.querySelector('input[name="flexRadioDefault"]:checked').value;         
+            let list = document.getElementById(radioSelected);
+            var li = document.createElement('li');
+            li.innerText = typesTexts;
+            li.draggable=true;
+            list.appendChild(li);
+           }
+           document.getElementById('textbox_id').value="";
+             setTimeout(clearRadio, 1000);
+                        }
+         function clearRadio(){             
+         $('input[name="flexRadioDefault"]').prop('checked', false);
+         }
+         const inputElement = document.getElementById("inputFile");
+         inputElement.addEventListener("change", handleFiles, false);
+         function handleFiles() {
+           const input = document.getElementById('inputFile');
+           const file = input.files[0];
+           const reader = new FileReader();
+           reader.onload = function() {
+             const contents = reader.result;
+             document.getElementById('textbox_id').value=contents;
+           };
+           reader.readAsText(file);        
+           
+         }
+      </script>
+   </body>
+</html>
